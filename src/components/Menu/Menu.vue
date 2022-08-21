@@ -3,7 +3,7 @@
   <div class="menu-filters">
     <button
       v-for="name in menuProducts"
-      :key="name.menuProducts"
+      :key="name.id"
       type="button"
       @click="removeDuplicateCategory(e)"
       value="{{ name.category }}"
@@ -26,68 +26,23 @@
 </template>
 
 <script lang="ts">
+import { products } from './data'
 export default {
   name: 'Menu',
   data() {
     return {
       greeting: 'Some Menu' as string,
-      menuProducts: [
-        {
-          title: 'Green Tea' as string,
-          imgUrl:
-            'https://images.pexels.com/photos/6545346/pexels-photo-6545346.jpeg?auto=compress&cs=tinysrgb&w=400',
-          desc: 'Fresh green tea leafs.' as string,
-          price: 3.5 as number,
-          category: 'tea' as string,
-          id: 1 as number,
-        },
-        {
-          title: 'Fresh Smoothie' as string,
-          imgUrl:
-            'https://images.pexels.com/photos/4443494/pexels-photo-4443494.jpeg?auto=compress&cs=tinysrgb&w=400' as string,
-          desc: 'Smoothie from seasonal fruits.' as string,
-          price: 5.5 as number,
-          category: 'smoothie' as string,
-          id: 2 as number,
-        },
-        {
-          title: 'Coffee' as string,
-          imgUrl:
-            'https://images.pexels.com/photos/2616172/pexels-photo-2616172.jpeg?auto=compress&cs=tinysrgb&w=400' as string,
-          desc: 'Coffee from finest Arabica beans' as string,
-          price: 3.5 as number,
-          category: 'coffee' as string,
-          id: 3 as number,
-        },
-        {
-          title: 'Lavender-lemon Tea' as string,
-          imgUrl:
-            'https://images.pexels.com/photos/1772124/pexels-photo-1772124.jpeg?auto=compress&cs=tinysrgb&w=400' as string,
-          desc: 'Delicious black tea with lavender and lemon' as string,
-          price: 3.5 as number,
-          category: 'tea' as string,
-          id: 4 as number,
-        },
-        {
-          title: 'sandwich' as string,
-          imgUrl:
-            'https://images.pexels.com/photos/1633525/pexels-photo-1633525.jpeg?auto=compress&cs=tinysrgb&w=400' as string,
-          desc: `Freshly made sandwich - ask for today's ingredietns` as string,
-          price: 4.5 as number,
-          category: 'lunch' as string,
-          id: 5 as number,
-        },
-      ],
-      filterButtons: '' as string,
-    };
+      menuProducts: products,
+      filterButtons: '' as string
+    }
   },
   methods: {
     removeDuplicateCategory() {
-      console.log('clicked btn');
-    },
+      console.log('clicked btn')
+    }
   },
-  computed: {},
-};
+  computed: {}
+}
 </script>
 
 <style scoped lang="scss">
