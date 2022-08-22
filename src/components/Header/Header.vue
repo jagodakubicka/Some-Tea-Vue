@@ -29,13 +29,13 @@ export default {
         {
           subtitle1: 'Healthy beverage for your soul.' as string,
           subtitle2:
-            'The taste of the best tea making in our tea house.' as string,
-        },
-      ],
-    };
+            'The taste of the best tea making in our tea house.' as string
+        }
+      ]
+    }
   },
-  methods: {},
-};
+  methods: {}
+}
 </script>
 
 <style scoped lang="scss">
@@ -104,10 +104,10 @@ export default {
     position: absolute;
     right: 5%;
     top: 0%;
+    transition: 0.5s all ease-in-out;
     &:hover {
       background-color: rgba(79, 121, 39, 0.479);
       color: #fff;
-      transition: 0.5s all ease-in-out;
     }
   }
 }
