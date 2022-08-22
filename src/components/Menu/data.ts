@@ -1,4 +1,4 @@
-import type { Product } from './types'
+import type { Product } from './types';
 
 export const products: Product[] = [
   {
@@ -8,7 +8,7 @@ export const products: Product[] = [
     desc: 'Fresh green tea leafs.',
     price: 3.5,
     category: 'tea',
-    id: 1
+    id: 1,
   },
   {
     title: 'Fresh Smoothie',
@@ -17,7 +17,7 @@ export const products: Product[] = [
     desc: 'Smoothie from seasonal fruits.',
     price: 5.5,
     category: 'smoothie',
-    id: 2
+    id: 2,
   },
   {
     title: 'Coffee',
@@ -26,7 +26,7 @@ export const products: Product[] = [
     desc: 'Coffee from finest Arabica beans',
     price: 3.5,
     category: 'coffee',
-    id: 3
+    id: 3,
   },
   {
     title: 'Lavender-lemon Tea',
@@ -35,7 +35,7 @@ export const products: Product[] = [
     desc: 'Delicious black tea with lavender and lemon',
     price: 3.5,
     category: 'tea',
-    id: 4
+    id: 4,
   },
   {
     title: 'sandwich',
@@ -44,6 +44,6 @@ export const products: Product[] = [
     desc: `Freshly made sandwich - ask for today's ingredietns`,
     price: 4.5,
     category: 'lunch',
-    id: 5
-  }
-]
+    id: 5,
+  },
+];
