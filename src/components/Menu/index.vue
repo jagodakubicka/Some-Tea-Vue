@@ -2,13 +2,13 @@
   <h1 id="menuItems">{{ greeting }}</h1>
   <div class="menu-filters">
     <button
-      v-for="item in menuProductsCategory"
-      :key="item"
+      v-for="category in categories"
+      :key="category"
       type="button"
       @click="removeDuplicateCategory(e)"
-      value="{{ item }}"
+      value="{{ category }}"
     >
-      {{ item }}
+      {{ category }}
     </button>
   </div>
   <div class="menu-section">
@@ -33,19 +33,20 @@ export default {
     return {
       greeting: 'Some Menu' as string,
       menuProducts: products,
-      filterButtons: '' as string,
       selectedCategory: 'all',
     };
   },
   methods: {
-    removeDuplicateCategory(): void {
+    categories(): void {
       console.log('clicked btn');
     },
   },
   computed: {
-    menuProductsCategory(): string[] {
-      const Categories = this.menuProducts.map((item) => item.category);
-      return ['all', ...new Set(Categories)];
+    categories(): string[] {
+      const categories = this.menuProducts.map(
+        (product: Product) => product.category
+      );
+      return ['all', ...new Set(categories)];
     },
   },
 };
