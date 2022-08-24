@@ -2,13 +2,13 @@
   <h1 id="menuItems">{{ greeting }}</h1>
   <div class="menu-filters">
     <button
-      v-for="name in menuProducts"
-      :key="name.id"
+      v-for="category in categories"
+      :key="category"
       type="button"
-      @click="removeDuplicateCategory(e)"
-      value="{{ name.category }}"
+      @click="selectCategory()"
+      value="{{ category }}"
     >
-      {{ name.category }}
+      {{ category }}
     </button>
   </div>
   <div class="menu-section">
@@ -26,23 +26,30 @@
 </template>
 
 <script lang="ts">
-import { products } from './data'
+import { products } from './data';
 export default {
   name: 'Menu',
   data() {
     return {
       greeting: 'Some Menu' as string,
       menuProducts: products,
-      filterButtons: '' as string
-    }
+      selectedCategory: 'all',
+    };
   },
   methods: {
-    removeDuplicateCategory() {
-      console.log('clicked btn')
-    }
+    selectCategory(): void {
+      console.log('clicked btn');
+    },
   },
-  computed: {}
-}
+  computed: {
+    categories(): string[] {
+      const categories = this.menuProducts.map(
+        (product: Product) => product.category
+      );
+      return ['all', ...new Set(categories)];
+    },
+  },
+};
 </script>
 
 <style scoped lang="scss">
