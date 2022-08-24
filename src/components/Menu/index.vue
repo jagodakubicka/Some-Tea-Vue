@@ -5,7 +5,7 @@
       v-for="category in categories"
       :key="category"
       type="button"
-      @click="removeDuplicateCategory(e)"
+      @click="selectCategory()"
       value="{{ category }}"
     >
       {{ category }}
@@ -37,7 +37,7 @@ export default {
     };
   },
   methods: {
-    categories(): void {
+    selectCategory(): void {
       console.log('clicked btn');
     },
   },
