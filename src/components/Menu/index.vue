@@ -2,10 +2,10 @@
   <h1 id="menuItems">{{ greeting }}</h1>
   <div class="menu-filters">
     <button
-      v-for="category in categories"
-      :key="category"
+      v-for="(category, index) in categories"
+      :key="index"
       type="button"
-      @click="selectCategory()"
+      @click="selectCategory(category)"
       value="{{ category }}"
     >
       {{ category }}
@@ -13,43 +13,58 @@
   </div>
   <div class="menu-section">
     <div
-      v-for="name in menuProducts"
-      :key="name"
+      v-for="product in filteredProducts"
+      :key="product.id"
       class="menu-section__singleItem"
     >
-      <h2>Some {{ name.title }}</h2>
-      <img v-bind:src="name.imgUrl" alt="" class="menu-section__productImg" />
-      <p>{{ name.desc }}</p>
-      <p>$ {{ name.price }}</p>
+      <h2>Some {{ product.title }}</h2>
+      <img
+        v-bind:src="product.imgUrl"
+        alt=""
+        class="menu-section__productImg"
+      />
+      <p>{{ product.desc }}</p>
+      <p>$ {{ product.price }}</p>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { products } from './data';
-export default {
+import { defineComponent } from 'vue'
+import { products } from './data'
+import type { Product } from './types'
+export default defineComponent({
   name: 'Menu',
   data() {
     return {
       greeting: 'Some Menu' as string,
       menuProducts: products,
-      selectedCategory: 'all',
-    };
+      filterButtons: '' as string,
+      selectedCategory: 'all'
+    }
   },
   methods: {
-    selectCategory(): void {
-      console.log('clicked btn');
-    },
+    selectCategory(category: string) {
+      this.selectedCategory = category
+    }
   },
   computed: {
     categories(): string[] {
-      const categories = this.menuProducts.map(
+      const categories: string[] = this.menuProducts.map(
         (product: Product) => product.category
-      );
-      return ['all', ...new Set(categories)];
+      )
+      return ['all', ...new Set(categories)]
     },
-  },
-};
+    filteredProducts(): Product[] {
+      const filteredProducts = this.menuProducts.filter(
+        (product: Product) => product.category === this.selectedCategory
+      )
+      return this.selectedCategory !== 'all'
+        ? filteredProducts
+        : this.menuProducts
+    }
+  }
+})
 </script>
 
 <style scoped lang="scss">
