@@ -2,7 +2,7 @@
 Basic menu project for with Vue
 
 
-![Design preview for the Personal portfolio](./src/assets/images/tip-calculator-preview.png)
+![Design preview for the Personal portfolio](https://github.com/jagodakubicka/Some-Tea-Vue/blob/master/kaleidoscopic-basbousa-c6c82c.netlify.app_.png)
 
 ### Built with
 
