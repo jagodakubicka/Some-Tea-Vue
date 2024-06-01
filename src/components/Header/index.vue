@@ -1,7 +1,10 @@
 <template>
   <section class="main-section">
     <div class="main-section__title">
-      <img src="./SOME_TEA-logo.png" alt="" class="main-section__logo" />
+      <img
+        src="./SOME_TEA-logo.png"
+        alt="Some Tea Logo"
+        class="main-section__logo" />
       <h1>{{ title1 }}</h1>
     </div>
     <div class="main-section__menu">
@@ -9,38 +12,40 @@
         {{ menuBtn }}
       </a>
       <h1>{{ title2 }}</h1>
-      <p v-for="name in about" :key="name" class="main-section__about">
-        {{ name.subtitle1 }} <br />
-        {{ name.subtitle2 }}
+      <p
+        v-for="(item, index) in about"
+        :key="index"
+        class="main-section__about">
+        {{ item.subtitle1 }} <br />
+        {{ item.subtitle2 }}
       </p>
     </div>
   </section>
 </template>
 
 <script lang="ts">
-export default {
+import { defineComponent } from 'vue';
+export default defineComponent({
   name: 'Header',
   data() {
     return {
-      title1: 'Want' as string,
-      title2: 'Some Tea?' as string,
-      menuBtn: 'menu' as string,
+      title1: 'Want',
+      title2: 'Some Tea?',
+      menuBtn: 'menu',
       about: [
         {
-          subtitle1: 'Healthy beverage for your soul.' as string,
-          subtitle2:
-            'The taste of the best tea making in our tea house.' as string
-        }
-      ]
-    }
+          subtitle1: 'Healthy beverage for your soul.',
+          subtitle2: 'The taste of the best tea making in our tea house.',
+        },
+      ],
+    };
   },
-  methods: {}
-}
+});
 </script>
 
 <style scoped lang="scss">
 .main-section {
-  widows: 100%;
+  width: 100%;
   display: flex;
   min-height: 90vh;
   &__title {
@@ -62,7 +67,7 @@ export default {
     }
   }
   &__logo {
-    max-width: 200px;
+    max-width: 100%;
     filter: invert(1);
     position: absolute;
     left: 2%;
@@ -94,11 +99,11 @@ export default {
     line-height: 1;
   }
   &__link {
-    border: 4px solid rgba(79, 121, 39, 0.479);
-    color: rgba(79, 121, 39, 0.479);
+    border: 4px solid rgba(79, 121, 39, 1);
+    color: rgba(79, 121, 39, 1);
     text-decoration: none;
     border-radius: 50%;
-    padding: 60px;
+    padding: 40px;
     text-transform: uppercase;
     background-color: #fff;
     position: absolute;
@@ -106,7 +111,7 @@ export default {
     top: 0%;
     transition: 0.5s all ease-in-out;
     &:hover {
-      background-color: rgba(79, 121, 39, 0.479);
+      background-color: rgba(79, 121, 39, 1);
       color: #fff;
     }
   }
